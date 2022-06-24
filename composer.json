@@ -1,0 +1,21 @@
+{
+    "name": "shiroi/think-log-viewer",
+    "description": "thinkphp6 logppppppp",
+    "require": {
+        "symfony/var-dumper": "^5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Shiroi\\ThinkLogViewer\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "hcr707305003",
+            "email": "707305003@qq.com"
+        }
+    ]
+}
