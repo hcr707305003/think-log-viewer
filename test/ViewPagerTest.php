@@ -13,6 +13,7 @@ class ViewPagerTest extends TestCase
     public function testViewPager() {
         $pager = new ViewPager();
         $pager->index();
+        echo 111;
 
     }
 }
