@@ -2,7 +2,7 @@
 thinkphp6的视图扩展
 
 ### 页面展示
-![image](xxx.png)
+![image](https://raw.githubusercontent.com/hcr707305003/think-log-viewer/main/src/view/image/show.png)
 
 ### 1.配置路由
 ~~~
