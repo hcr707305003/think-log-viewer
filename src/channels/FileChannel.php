@@ -42,7 +42,7 @@ class FileChannel
     }
 
     private function loadParam() {
-        $this->param = request()->get();
+        $this->param = array_merge(request()->get(),['page' => $this->getPage()]);
     }
 
     private function loadLog() {
