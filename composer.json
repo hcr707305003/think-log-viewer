@@ -1,9 +1,8 @@
 {
     "name": "shiroi/think-log-viewer",
-    "description": "thinkphp6 logppppppp",
+    "description": "thinkphp6 log视图工具",
     "require": {
         "php": ">=7.4",
-        "topthink/framework": "^6.0.0",
         "symfony/var-dumper": "^5.4"
     },
     "require-dev": {
