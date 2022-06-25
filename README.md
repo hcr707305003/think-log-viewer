@@ -14,4 +14,4 @@ Route::get('log_view', "\Shiroi\ThinkLogViewer\LogServer@index");
 php think run
 ~~~
 
-### 3.浏览器访问`http://127.0.0.1:8000/log_view`即可
+### 3.访问浏览器 `http://127.0.0.1:8000/log_view`即可
