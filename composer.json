@@ -1,6 +1,6 @@
 {
     "name": "shiroi/think-log-viewer",
-    "description": "thinkphp6 log视图工具",
+    "description": "thinkphp6 log视图工具 图片展示：<img src=\"https://raw.githubusercontent.com/hcr707305003/think-log-viewer/main/src/view/image/show.png\" width=\"80%\">",
     "license": "MIT",
     "require": {
         "php": ">=7.4"
