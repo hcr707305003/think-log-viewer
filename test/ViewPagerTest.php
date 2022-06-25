@@ -2,7 +2,7 @@
 namespace test;
 
 use PHPUnit\Framework\TestCase;
-use Shiroi\ThinkLogViewer\ViewPager;
+use Shiroi\ThinkLogViewer\LogServer;
 
 class ViewPagerTest extends TestCase
 {
@@ -11,9 +11,7 @@ class ViewPagerTest extends TestCase
      * @doesNotPerformAssertions
      */
     public function testViewPager() {
-        $pager = new ViewPager();
+        $pager = new LogServer();
         $pager->index();
-        echo 111;
-
     }
 }
