@@ -1,5 +1,5 @@
 # think-log-viewer
-thinkphp6的视图扩展
+thinkphp6 log日志的视图扩展包
 
 ### 页面展示
 ![image](https://raw.githubusercontent.com/hcr707305003/think-log-viewer/main/src/view/image/show.png)
