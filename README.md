@@ -2,8 +2,7 @@
 thinkphp6 log日志的视图扩展包
 
 ### 页面展示
-<img src="https://raw.githubusercontent.com/hcr707305003/think-log-viewer/main/src/view/image/show.png" width="80%">
-
+![image](https://s3.bmp.ovh/imgs/2022/06/26/3385b1106dbd178f.png)
 
 ### 1.配置路由
 ~~~
