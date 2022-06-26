@@ -62,6 +62,8 @@ class FileChannel
             }
             $this->content_arr[$k]['content'] = $v;
         }
+        //数组反转
+        $this->content_arr = array_reverse($this->content_arr);
         //数组总数
         $this->total = count($this->content_arr);
         //总页数
