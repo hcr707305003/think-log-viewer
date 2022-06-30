@@ -68,6 +68,7 @@
                                                         echo 'danger';break;
                                                     case "warning":
                                                         echo 'warning';break;
+                                                    case "sql":
                                                     case "info":
                                                         echo 'info';break;
                                                     case "debug":

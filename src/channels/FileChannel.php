@@ -49,18 +49,20 @@ class FileChannel
         $this->log_file = $this->log_path . ($this->param['file']??'');
         $this->content = (file_exists($this->log_file) && is_file($this->log_file)) ? file_get_contents($this->log_file): "";
         foreach (array_filter(explode(PHP_EOL,$this->content)) as $k => $v) {
-            if(preg_match("/\[debug\]/",$v)) {
+            if(preg_match("/(.*?)\[debug\](.*?)$/i",$v,$match)) {
                 $this->content_arr[$k]['level'] = 'debug';
-            } elseif (preg_match("/\[info\]/",$v)) {
+            } elseif (preg_match("/(.*?)\[info\](.*?)$/i",$v,$match)) {
                 $this->content_arr[$k]['level'] = 'info';
-            } elseif (preg_match("/\[warning\]/",$v)) {
+            } elseif (preg_match("/(.*?)\[warning\](.*?)$/i",$v,$match)) {
                 $this->content_arr[$k]['level'] = 'warning';
-            } elseif (preg_match("/\[error\]/",$v)) {
+            } elseif (preg_match("/(.*?)\[error\](.*?)$/i",$v,$match)) {
                 $this->content_arr[$k]['level'] = 'error';
+            } elseif (preg_match("/(.*?)\[sql\](.*?)$/i",$v,$match)) {
+                $this->content_arr[$k]['level'] = 'sql';
             }else {
                 $this->content_arr[$k]['level'] = 'all';
             }
-            $this->content_arr[$k]['content'] = $v;
+            $this->content_arr[$k]['content'] = $match[2]??$v;
         }
         //数组反转
         $this->content_arr = array_reverse($this->content_arr);
@@ -73,7 +75,7 @@ class FileChannel
     }
 
     private function getPage() {
-        return request()->get('page',10);
+        return request()->get('page',1);
     }
 
     private function getLimit() {
