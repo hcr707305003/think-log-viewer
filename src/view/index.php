@@ -63,19 +63,19 @@
                                         <tbody>
                                         <?php  foreach ($this->splice_content_arr as $v) {  ?>
                                             <tr class="<?php
-                                                switch ($v['level']) {
-                                                    case "error":
-                                                        echo 'danger';break;
-                                                    case "warning":
-                                                        echo 'warning';break;
-                                                    case "sql":
-                                                    case "info":
-                                                        echo 'info';break;
-                                                    case "debug":
-                                                        echo 'success';break;
-                                                    default:
-                                                        echo 'default';break;
-                                                }
+                                            switch ($v['level']) {
+                                                case "error":
+                                                    echo 'danger';break;
+                                                case "warning":
+                                                    echo 'warning';break;
+                                                case "sql":
+                                                case "info":
+                                                    echo 'info';break;
+                                                case "debug":
+                                                    echo 'success';break;
+                                                default:
+                                                    echo 'default';break;
+                                            }
                                             ?>">
                                                 <td><?=$v['level']?></td>
                                                 <td><?=$v['content']?></td>
@@ -86,15 +86,25 @@
                                 </div>
                                 <ul class="pagination">
                                     <li>
-                                        <a href="?<?php $this->param['page'] = (($this->param['page'] == 1) ? 1: $this->param['page']-1);
-                                    echo http_build_query($this->param); ?>">&laquo;</a>
+                                        <a href="?<?php $this->param['page'] = 1;
+                                        echo http_build_query($this->param); ?>">&laquo;</a>
                                     </li>
-                                    <?php for ($i = 1; $i <= $this->totalPage; $i++) { ?>
-                                        <li><a href="?<?php $this->param['page'] = $i;echo http_build_query($this->param); ?>"><?=$i?></a></li>
+                                    <li>
+                                        <a href="?<?php $this->param['page'] = isset($_GET['page'])?(($_GET['page']==1) ? 1: $_GET['page']-1):1;
+                                        echo http_build_query($this->param); ?>"><</a>
+                                    </li>
+                                    <?php for ($i = ($_GET['page']??1); $i <= $this->totalPage; $i++) { ?>
+                                        <?php if($i < ($_GET['page'] + 5) || $i > ($this->totalPage - 4)) { ?>
+                                            <li><a href="?<?php $this->param['page'] = $i;echo http_build_query($this->param); ?>"><?=$i?></a></li>
+                                        <?php } ?>
                                     <?php } ?>
                                     <li>
-                                        <a href="?<?php $this->param['page'] = (($this->param['page'] == $this->totalPage)? $this->totalPage: $this->totalPage+1);
-                                    echo http_build_query($this->param); ?>">&raquo;</a>
+                                        <a href="?<?php $this->param['page'] = isset($_GET['page'])? (($_GET['page']==$this->totalPage)? $this->totalPage: $_GET['page']+1): $this->totalPage;
+                                        echo http_build_query($this->param); ?>">></a>
+                                    </li>
+                                    <li>
+                                        <a href="?<?php $this->param['page'] = $this->totalPage;
+                                        echo http_build_query($this->param); ?>">&raquo;</a>
                                     </li>
                                 </ul>
                             </div>
