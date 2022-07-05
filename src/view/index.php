@@ -94,7 +94,7 @@
                                         echo http_build_query($this->param); ?>"><</a>
                                     </li>
                                     <?php for ($i = ($_GET['page']??1); $i <= $this->totalPage; $i++) { ?>
-                                        <?php if($i < ($_GET['page']??1 + 5) || $i > ($this->totalPage - 4)) { ?>
+                                        <?php if($i < ((isset($_GET['page'])?$_GET['page']:1) + 5) || $i > ($this->totalPage - 4)) { ?>
                                             <li><a href="?<?php $this->param['page'] = $i;echo http_build_query($this->param); ?>"><?=$i?></a></li>
                                         <?php } ?>
                                     <?php } ?>
