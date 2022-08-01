@@ -39,6 +39,7 @@ class FileChannel
     private function initLog() {
         $this->log_path = public_path($this->config['path']);
         $this->all_log = $this->getDirs($this->log_path);
+        asort($this->all_log);
     }
 
     private function loadParam() {
