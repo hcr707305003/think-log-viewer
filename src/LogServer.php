@@ -46,7 +46,7 @@ class LogServer
         if($this->isOpen) {
             switch ($this->default) {
                 case 'file':
-                    (new FileChannel($this->default_channel))->view();
+                    FileChannel::getInstance($this->default_channel)->view();
                     break;
                 default:
             }
