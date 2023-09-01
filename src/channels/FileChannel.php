@@ -77,6 +77,7 @@ class FileChannel extends BaseChannel implements DefaultLogMethodInterface
         $this->loadParam();
     }
 
+
     public function view()
     {
         $all_data = $this
