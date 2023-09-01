@@ -56,7 +56,6 @@ Route::get('log_view', "\Shiroi\ThinkLogViewer\LogServer@index");
 ~~~
 
 
-
 ### 2.运行thinkphp服务
 ~~~ 
 php think run
