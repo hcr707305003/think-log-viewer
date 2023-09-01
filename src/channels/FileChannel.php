@@ -260,7 +260,9 @@ class FileChannel extends BaseChannel implements DefaultLogMethodInterface
                 $newLogData[$k]['level'] = 'error';
             } elseif (preg_match("/\[([0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2})\]\[sql\] (.*?)$/i",$v,$match)) {
                 $newLogData[$k]['level'] = 'sql';
-            }else {
+            } elseif (preg_match("/\[([0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2})\]\[notice\] (.*?)$/i",$v,$match)) {
+                $newLogData[$k]['level'] = 'notice';
+            } else {
                 $newLogData[$k]['level'] = 'all';
             }
             $newLogData[$k]['date'] = $match[1] ?? '时间获取失败';
