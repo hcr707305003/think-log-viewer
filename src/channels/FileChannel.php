@@ -105,7 +105,7 @@ class FileChannel extends BaseChannel implements DefaultLogMethodInterface
             $logs[$key] = $log;
             //计算文件大小
 //            $this->fileSize += filesize($log);
-            $this->total += substr_count($content, "\r\n");
+            $this->total += substr_count($content, "\n");
         }
 
         //排序
