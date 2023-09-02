@@ -193,6 +193,7 @@ class LogServer
     private function lockView()
     {
         $lock_hint_content = env('log_view.lock_hint_content', $this->lock_hint_content);
+
         if($this->isLock && (cookie($this->lock_cookies_name) != base64_encode($this->lock_password))) {
             echo <<<EOF
             <script>
