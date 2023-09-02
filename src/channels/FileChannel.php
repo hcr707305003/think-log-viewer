@@ -87,7 +87,6 @@ class FileChannel extends BaseChannel implements DefaultLogMethodInterface
                 'create_time' => 'desc'
             ])
             ->index(preg_quote(request()->param('search', ''), '/'));
-
         include_once __DIR__."/../view/index.php";
     }
 
