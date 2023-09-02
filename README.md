@@ -53,6 +53,12 @@ return [
 
 // route\app.php 文件
 Route::get('log_view', "\Shiroi\ThinkLogViewer\LogServer@index");
+
+// .env 文件(设置该页面必须密码才能查看)
+[LOG_VIEW]
+IS_LOCK=true
+LOCK_PASSWORD=123456
+lock_hint_content=请输入验证码
 ~~~
 
 ### 2.运行thinkphp服务
