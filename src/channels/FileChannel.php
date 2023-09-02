@@ -298,7 +298,6 @@ class FileChannel extends BaseChannel implements DefaultLogMethodInterface
     protected function getDirs(string $dir): array
     {
         $files = array();
-
         if(file_exists($dir)) if ( $handle = opendir($dir) ) {
             while ( ($file = readdir($handle)) !== false ) {
                 if ( $file != ".." && $file != "." ) {
