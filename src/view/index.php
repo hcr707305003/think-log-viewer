@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <title>log</title>
+    <title>log view</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <style>
         <?php echo include_once __DIR__."/css/bootstrap.min.css"?>
@@ -11,7 +11,7 @@
 <body>
 
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-    <div class="navbar-brand-wrapper d-flex justify-content-center">
+    <div class="navbar-brand-wrapper d-flex justify-content-center sidebar-offcanvas">
         <div class="navbar-brand-inner-wrapper d-flex justify-content-between align-items-center w-100">
             <a class="navbar-brand brand-logo" href="#">
                 <div style="color:#999;font-size:36px;font-weight:bold;position:fixed;display:block;">log view</div>
@@ -24,6 +24,12 @@
                 <button onclick="clearSearchForm()" class="btn btn-sm btn-primary" type="button"><i
                             class="fa  fa-eraser"></i> clean
                 </button>
+                <select style="border: 1px solid #f3f3f3;" name="level" id="myLevel">
+                    <option value="">all</option>
+                    <?php foreach ($this->level as $level) { ?>
+                        <option value="<?=$level?>" <?=(input('level') == $level)? 'selected': ''?> ><?=$level?></option>
+                    <?php } ?>
+                </select>
                 <input type="text" class="form-control" name="search" placeholder="Search now" id="search" value="<?=input('search')?>">
                 <button type="submit" class="btn btn-sm btn-success" type="button" form="myForm"><i
                             class="fa  fa-eraser"></i> search
@@ -33,9 +39,11 @@
                     function clearSearchForm() {
                         let url_all = window.location.href;
                         let arr = url_all.split('?');
-                        let url = arr[0];
-                        window.location.href = url;
+                        window.location.href = arr[0];
                     }
+                    document.getElementById("myLevel").addEventListener("change", function() {
+                        document.getElementById("myForm").submit();
+                    });
                     document.onkeydown = function(e){
                         if(!e) e = window.event;//火狐中是 window.event
                         if((e.keyCode || e.which) === 13){
@@ -71,7 +79,7 @@
     <div class="main-panel">
         <div class="row">
             <div class="col-md-12 stretch-card">
-                <? if ($all_data['total'] ?? 0) { ?>
+                <?php if ($all_data['total'] ?? 0) { ?>
                     <div class="card">
                         <div class="card-body">
                             <p class="card-title"><a style="font-size: 14px;"><?=$this->choose_file?></a>&nbsp;&nbsp;&nbsp;&nbsp;<a style="color: red;font-size: 10px">(注意：条数和页数会有差别)</a></p>
@@ -135,9 +143,9 @@
                             </div>
                         </div>
                     </div>
-                <? } else { ?>
+                <?php } else { ?>
                     <div class="d-flex align-items-center justify-content-center" style="height: 100vh;width: 100%;"><h1 style="color:#999;">暂无数据~</h1></div>
-                <? } ?>
+                <?php } ?>
             </div>
         </div>
     </div>

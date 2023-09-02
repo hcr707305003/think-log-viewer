@@ -80,13 +80,15 @@ class FileChannel extends BaseChannel implements DefaultLogMethodInterface
 
     public function view()
     {
-        $all_data = $this
-            ->setPage(input('page', 1))
-            ->setLimit(input('limit', 20))
-            ->setOrder([
-                'create_time' => 'desc'
-            ])
-            ->index(request()->param('search', ''));
+        if(mb_strlen($search = request()->param('search', '')) <= 100) {
+            $all_data = $this
+                ->setPage(input('page', 1))
+                ->setLimit(input('limit', 20))
+                ->setOrder([
+                    'create_time' => 'desc'
+                ])
+                ->index(preg_quote($search, '/'));
+        }
         include_once __DIR__."/../view/index.php";
     }
 
@@ -287,8 +289,10 @@ class FileChannel extends BaseChannel implements DefaultLogMethodInterface
 
     protected function buildWhere($queryString): string
     {
+        //get level
+        $level = input('level', '', 'strval');
         //generate match statement
-        return "/\[[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\][[\S]+].*?{$queryString}.*?\n/i";
+        return "/\[[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}\]\[{$level}.*\].*?{$queryString}.*?\n/i";
     }
 
     protected function getDirs(string $dir): array
