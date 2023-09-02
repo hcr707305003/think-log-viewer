@@ -30,7 +30,7 @@
                         <option value="<?=$level?>" <?=(input('level') == $level)? 'selected': ''?> ><?=$level?></option>
                     <?php } ?>
                 </select>
-                <input type="text" class="form-control" name="search" placeholder="Search now" id="search" value="<?=input('search')?>">
+                <textarea class="form-control" rows="1" name="search" placeholder="Search now" id="search"><?=input('search')?></textarea>
                 <button type="submit" class="btn btn-sm btn-success" type="button" form="myForm"><i
                             class="fa  fa-eraser"></i> search
                 </button>
@@ -47,7 +47,7 @@
                     document.onkeydown = function(e){
                         if(!e) e = window.event;//火狐中是 window.event
                         if((e.keyCode || e.which) === 13){
-                            document.getElementById("search").click();
+                            document.getElementById("myForm").submit();
                         }
                     }
                 </script>

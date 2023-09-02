@@ -80,15 +80,13 @@ class FileChannel extends BaseChannel implements DefaultLogMethodInterface
 
     public function view()
     {
-        if(mb_strlen($search = request()->param('search', '')) <= 100) {
-            $all_data = $this
-                ->setPage(input('page', 1))
-                ->setLimit(input('limit', 20))
-                ->setOrder([
-                    'create_time' => 'desc'
-                ])
-                ->index(preg_quote($search, '/'));
-        }
+        $all_data = $this
+            ->setPage(input('page', 1))
+            ->setLimit(input('limit', 20))
+            ->setOrder([
+                'create_time' => 'desc'
+            ])
+            ->index(preg_quote(request()->param('search', ''), '/'));
         include_once __DIR__."/../view/index.php";
     }
 
@@ -298,6 +296,7 @@ class FileChannel extends BaseChannel implements DefaultLogMethodInterface
     protected function getDirs(string $dir): array
     {
         $files = array();
+
         if(file_exists($dir)) if ( $handle = opendir($dir) ) {
             while ( ($file = readdir($handle)) !== false ) {
                 if ( $file != ".." && $file != "." ) {
